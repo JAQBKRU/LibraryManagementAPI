@@ -128,59 +128,59 @@ async def get_user_by_uuid(
 
     raise HTTPException(status_code=404, detail="User not found")
 
-@router.put("/{user_id}/", tags=["User"], response_model=User, status_code=201)
-@inject
-async def update_user(
-        user_id: UUID,
-        updated_user: UserIn,
-        service: IUserService = Depends(Provide[Container.user_service]),
-) -> dict:
-    """An endpoint for updating an existing user's data.
-
-    Args:
-        user_id (UUID): The unique identifier of the user to be updated.
-        updated_user (UserIn): The updated user data.
-        service (IUserService, optional): The injected service dependency.
-
-    Raises:
-        HTTPException:
-            - 404 if the user is not found.
-
-    Returns:
-        dict: The updated user details.
-    """
-    if await service.get_user_by_id(user_uuid=user_id):
-        await service.update_user(user_id=user_id, data=updated_user)
-
-        return {**updated_user.model_dump(), "id": user_id}
-
-    raise HTTPException(status_code=404, detail="User not found")
-
-@router.delete("/{user_id}/", tags=["User"], status_code=204)
-@inject
-async def delete_user(
-        user_id: UUID,
-        service: IUserService = Depends(Provide[Container.user_service]),
-) -> None:
-    """An endpoint for deleting a user from the system.
-
-    Args:
-        user_id (UUID): The unique identifier of the user to be deleted.
-        service (IUserService, optional): The injected service dependency.
-
-    Raises:
-        HTTPException:
-            - 404 if the user is not found.
-            - 400 if the user has active lendings and cannot be deleted.
-
-    Returns:
-        None
-    """
-    if await service.get_user_by_id(user_uuid=user_id):
-        if await service.has_active_lendings(user_id=user_id):
-            raise HTTPException(status_code=400, detail="Can not delete user: User has active lendings.")
-
-        await service.delete_user(user_id)
-        return
-
-    raise HTTPException(status_code=404, detail="User not found")
+# @router.put("/{user_id}/", tags=["User"], response_model=User, status_code=201)
+# @inject
+# async def update_user(
+#         user_id: UUID,
+#         updated_user: UserIn,
+#         service: IUserService = Depends(Provide[Container.user_service]),
+# ) -> dict:
+#     """An endpoint for updating an existing user's data.
+#
+#     Args:
+#         user_id (UUID): The unique identifier of the user to be updated.
+#         updated_user (UserIn): The updated user data.
+#         service (IUserService, optional): The injected service dependency.
+#
+#     Raises:
+#         HTTPException:
+#             - 404 if the user is not found.
+#
+#     Returns:
+#         dict: The updated user details.
+#     """
+#     if await service.get_user_by_id(user_uuid=user_id):
+#         await service.update_user(user_id=user_id, data=updated_user)
+#
+#         return {**updated_user.model_dump(), "id": user_id}
+#
+#     raise HTTPException(status_code=404, detail="User not found")
+#
+# @router.delete("/{user_id}/", tags=["User"], status_code=204)
+# @inject
+# async def delete_user(
+#         user_id: UUID,
+#         service: IUserService = Depends(Provide[Container.user_service]),
+# ) -> None:
+#     """An endpoint for deleting a user from the system.
+#
+#     Args:
+#         user_id (UUID): The unique identifier of the user to be deleted.
+#         service (IUserService, optional): The injected service dependency.
+#
+#     Raises:
+#         HTTPException:
+#             - 404 if the user is not found.
+#             - 400 if the user has active lendings and cannot be deleted.
+#
+#     Returns:
+#         None
+#     """
+#     if await service.get_user_by_id(user_uuid=user_id):
+#         if await service.has_active_lendings(user_id=user_id):
+#             raise HTTPException(status_code=400, detail="Can not delete user: User has active lendings.")
+#
+#         await service.delete_user(user_id)
+#         return
+#
+#     raise HTTPException(status_code=404, detail="User not found")

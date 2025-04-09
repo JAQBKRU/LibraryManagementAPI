@@ -1,7 +1,7 @@
 services:
   app:
     build:
-      context: libraryapi/
+      context: libraryapi
     ports:
       - "8000:8000"
     volumes:
