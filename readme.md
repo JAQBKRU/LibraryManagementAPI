@@ -94,7 +94,7 @@ Before you start, make sure you have the following software installed:
 	```
 5. Run the Docker Desktop application (ensure Docker is running).
 6. Build the Docker image:
-	
+	```
 	docker compose build
 	```
 7. Run the application:
