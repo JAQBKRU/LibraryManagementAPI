@@ -63,16 +63,16 @@ Authentication is implemented using **JWT tokens**, ensuring secure access to pr
 - Secure API endpoints
 - Data validation and sanitization
 
-## Installation
+## Installation and Setup
 
 To get the Library Management System API up and running locally, follow the steps below.
 
 ### Prerequisites
 Before you start, make sure you have the following software installed:
 
-- **JDK 21** (Java Development Kit, required for running Java-based services, including Spring Boot if applicable)
-- **PostgreSQL 17.0** (for managing the application's database)
-- **Docker** (for containerizing and running the application easily)
+- **Python 3.12**
+- **PostgreSQL 17.0**
+- **Docker**
 
 ### Steps
 
@@ -80,6 +80,18 @@ Before you start, make sure you have the following software installed:
    ```bash
    git clone https://github.com/JAQBKRU/LibraryManagementAPI.git
    ```
+2. Navigate to the backend directory (/libraryapi).
+```cd libraryapi```
+3. Install production dependencies:
+```pip install -r requirements.txt```
+4. Install development dependencies:
+```pip install -r requirements-dev.txt```
+5. Run the Docker Desktop application (ensure Docker is running).
+6. Build the Docker image:
+```docker compose build```
+7. Run the application:
+```docker compose up```
+8. The application will be available at: http://localhost:8000/docs (Swagger UI)
 
 ## Useful commands
 - Install production dependencies: `pip install -r requirements.txt`  
