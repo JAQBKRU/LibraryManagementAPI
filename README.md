@@ -7,6 +7,7 @@ The Library Management System API is designed to manage and organize a library's
 ### List of functionalities
 - Book management (CRUD)
 - Borrowing system
+- Display book history (which user borrowed, which book, and when)
 - Summaries, e.g., most frequently borrowed books, average number of monthly borrowings by category, etc.
 
 ## Features
