@@ -81,16 +81,26 @@ Before you start, make sure you have the following software installed:
    git clone https://github.com/JAQBKRU/LibraryManagementAPI.git
    ```
 2. Navigate to the backend directory (/libraryapi).
-```cd libraryapi```
+	```
+	cd libraryapi
+	```
 3. Install production dependencies:
-```pip install -r requirements.txt```
+	```
+	pip install -r requirements.txt
+	```
 4. Install development dependencies:
-```pip install -r requirements-dev.txt```
+	```
+	pip install -r requirements-dev.txt
+	```
 5. Run the Docker Desktop application (ensure Docker is running).
 6. Build the Docker image:
-```docker compose build```
+	
+	docker compose build
+	```
 7. Run the application:
-```docker compose up```
+	```
+	docker compose up
+	```
 8. The application will be available at: http://localhost:8000/docs (Swagger UI)
 
 ## Useful commands
